@@ -1,6 +1,7 @@
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
-use ieee.std_logic_unsigned.all;
+library ieee;
+use ieee.std_logic_1164.all;
+--use ieee.std_logic_arith.all;
+--use ieee.std_logic_unsigned.all;
 
 entity contador  is
     Port ( CLK : in  STD_LOGIC;
