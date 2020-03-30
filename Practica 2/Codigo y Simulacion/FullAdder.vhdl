@@ -8,14 +8,14 @@ entity Full_Add is
 end Full_Add;
 
 architecture archi of Full_Add is
-  component mux_4_1
+  component mux
     port(A, B, C, D: in bit;
       S1,S2: in bit;
       z: out bit);
   end component;
-signal cinnot : bit;
+signal Nci: bit;
 begin
-  Ncin <= NOT ci;
-  mux1: mux_4_1 port map(ci, cinnot, cinnot, ci, X, Y, s);
-  mux2: mux_4_1 port map('0', ci, ci, '1', X, Y, co);
+  Nci <= NOT ci;
+  mux1: mux port map(ci, Nci, NCi, ci, X, Y, s);
+  mux2: mux port map('0', ci, ci, '1', X, Y, co);
 end archi;
