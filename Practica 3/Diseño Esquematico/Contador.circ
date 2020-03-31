@@ -57,53 +57,71 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <wire from="(750,170)" to="(750,180)"/>
     <wire from="(670,190)" to="(720,190)"/>
     <wire from="(550,190)" to="(600,190)"/>
+    <wire from="(670,80)" to="(920,80)"/>
     <wire from="(260,200)" to="(260,210)"/>
     <wire from="(380,180)" to="(380,190)"/>
     <wire from="(240,170)" to="(420,170)"/>
     <wire from="(260,220)" to="(430,220)"/>
+    <wire from="(300,300)" to="(470,300)"/>
     <wire from="(720,190)" to="(760,190)"/>
+    <wire from="(520,100)" to="(620,100)"/>
     <wire from="(170,190)" to="(270,190)"/>
+    <wire from="(300,210)" to="(300,300)"/>
     <wire from="(240,180)" to="(270,180)"/>
+    <wire from="(860,140)" to="(860,180)"/>
     <wire from="(420,170)" to="(580,170)"/>
     <wire from="(430,220)" to="(590,220)"/>
+    <wire from="(470,300)" to="(630,300)"/>
     <wire from="(590,220)" to="(750,220)"/>
+    <wire from="(630,300)" to="(790,300)"/>
     <wire from="(640,180)" to="(670,180)"/>
     <wire from="(240,210)" to="(260,210)"/>
     <wire from="(360,180)" to="(360,360)"/>
     <wire from="(260,200)" to="(270,200)"/>
     <wire from="(880,180)" to="(880,360)"/>
     <wire from="(540,180)" to="(540,360)"/>
-    <wire from="(800,180)" to="(880,180)"/>
     <wire from="(540,180)" to="(550,180)"/>
     <wire from="(670,180)" to="(670,190)"/>
     <wire from="(550,180)" to="(550,190)"/>
     <wire from="(580,170)" to="(580,180)"/>
-    <wire from="(480,180)" to="(540,180)"/>
+    <wire from="(800,180)" to="(860,180)"/>
     <wire from="(240,170)" to="(240,180)"/>
     <wire from="(310,180)" to="(360,180)"/>
     <wire from="(420,170)" to="(420,180)"/>
     <wire from="(260,210)" to="(260,220)"/>
+    <wire from="(920,80)" to="(920,300)"/>
     <wire from="(430,200)" to="(430,220)"/>
+    <wire from="(630,210)" to="(630,300)"/>
+    <wire from="(790,210)" to="(790,300)"/>
+    <wire from="(520,100)" to="(520,180)"/>
+    <wire from="(600,60)" to="(600,140)"/>
     <wire from="(590,200)" to="(590,220)"/>
+    <wire from="(470,210)" to="(470,300)"/>
     <wire from="(580,170)" to="(750,170)"/>
     <wire from="(750,200)" to="(750,220)"/>
+    <wire from="(480,180)" to="(520,180)"/>
     <wire from="(720,190)" to="(720,360)"/>
+    <wire from="(860,180)" to="(880,180)"/>
     <wire from="(580,180)" to="(600,180)"/>
+    <wire from="(600,60)" to="(620,60)"/>
     <wire from="(360,180)" to="(380,180)"/>
     <wire from="(420,180)" to="(440,180)"/>
+    <wire from="(520,180)" to="(540,180)"/>
     <wire from="(430,200)" to="(440,200)"/>
+    <wire from="(790,300)" to="(920,300)"/>
+    <wire from="(600,140)" to="(860,140)"/>
     <wire from="(750,180)" to="(760,180)"/>
     <wire from="(750,200)" to="(760,200)"/>
     <wire from="(590,200)" to="(600,200)"/>
-    <comp lib="4" loc="(800,180)" name="J-K Flip-Flop">
-      <a name="trigger" val="falling"/>
+    <comp lib="0" loc="(540,360)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="output" val="true"/>
+      <a name="tristate" val="false"/>
     </comp>
-    <comp lib="4" loc="(640,180)" name="J-K Flip-Flop">
-      <a name="trigger" val="falling"/>
-    </comp>
-    <comp lib="0" loc="(170,190)" name="Clock"/>
+    <comp lib="1" loc="(670,80)" name="AND Gate"/>
+    <comp lib="0" loc="(240,210)" name="Constant"/>
     <comp lib="0" loc="(240,170)" name="Constant"/>
-    <comp lib="4" loc="(310,180)" name="J-K Flip-Flop">
+    <comp lib="4" loc="(800,180)" name="J-K Flip-Flop">
       <a name="trigger" val="falling"/>
     </comp>
     <comp lib="0" loc="(720,360)" name="Pin">
@@ -111,7 +129,13 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
       <a name="output" val="true"/>
       <a name="tristate" val="false"/>
     </comp>
+    <comp lib="0" loc="(170,190)" name="Clock"/>
     <comp lib="0" loc="(360,360)" name="Pin">
+      <a name="facing" val="north"/>
+      <a name="output" val="true"/>
+      <a name="tristate" val="false"/>
+    </comp>
+    <comp lib="0" loc="(880,360)" name="Pin">
       <a name="facing" val="north"/>
       <a name="output" val="true"/>
       <a name="tristate" val="false"/>
@@ -119,16 +143,11 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <comp lib="4" loc="(480,180)" name="J-K Flip-Flop">
       <a name="trigger" val="falling"/>
     </comp>
-    <comp lib="0" loc="(880,360)" name="Pin">
-      <a name="facing" val="north"/>
-      <a name="output" val="true"/>
-      <a name="tristate" val="false"/>
+    <comp lib="4" loc="(640,180)" name="J-K Flip-Flop">
+      <a name="trigger" val="falling"/>
     </comp>
-    <comp lib="0" loc="(240,210)" name="Constant"/>
-    <comp lib="0" loc="(540,360)" name="Pin">
-      <a name="facing" val="north"/>
-      <a name="output" val="true"/>
-      <a name="tristate" val="false"/>
+    <comp lib="4" loc="(310,180)" name="J-K Flip-Flop">
+      <a name="trigger" val="falling"/>
     </comp>
   </circuit>
 </project>
