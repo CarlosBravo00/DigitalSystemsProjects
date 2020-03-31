@@ -1,6 +1,7 @@
-library ieee;
-use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use ieee.std_logic_unsigned.all;
+
 
 entity contBCD is
     Port ( enable  : in  STD_LOGIC;
@@ -10,14 +11,7 @@ entity contBCD is
 end contBCD;
 
 architecture Funcional of contBCD is
-    component FullAdder is 
-    PORT (
-        A,B,Cin : in BIT;
-        Cout, S : out BIT
-       );
-end component;
 signal cont : std_logic_vector (3 downto 0):="0000";
-signal c : std_logic_vector (3 downto 0):="0000";
 begin
  process(clk,reset,enable)
  begin
