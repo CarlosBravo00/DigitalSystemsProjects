@@ -15,11 +15,10 @@ ARCHITECTURE behavior OF testcontador IS
     END COMPONENT;
     
    signal CLK : std_logic := '0';
-
    signal unid : std_logic_vector(3 downto 0);
    signal dec : std_logic_vector(3 downto 0);
 
-   constant CLK_period : time := 10 ns;
+   constant CLK_period : time := 1 ns;
  
 BEGIN
    uut: contador PORT MAP (
@@ -30,21 +29,52 @@ BEGIN
 
    CLK_process :process
    begin
-		CLK <= '0';
-		wait for CLK_period/2;
+      CLK <= '0';
+      wait for CLK_period/4;
 		CLK <= '1';
-		wait for CLK_period/2;
+      wait for CLK_period/4;
+      CLK <= '0';
+		wait for CLK_period/4;
+		CLK <= '1';
+      wait for CLK_period/4;
+      CLK <= '0';
+      wait for CLK_period/4;
+		CLK <= '1';
+      wait for CLK_period/4;
+      CLK <= '0';
+		wait for CLK_period/4;
+		CLK <= '1';
+      wait for CLK_period/4;
+      CLK <= '0';
+      wait for CLK_period/4;
+		CLK <= '1';
+      wait for CLK_period/4;
+      CLK <= '0';
+		wait for CLK_period/4;
+		CLK <= '1';
+      wait for CLK_period/4;
+      CLK <= '0';
+      wait for CLK_period/4;
+		CLK <= '1';
+      wait for CLK_period/4;
+      CLK <= '0';
+		wait for CLK_period/4;
+		CLK <= '1';
+      wait for CLK_period/4;
+      CLK <= '0';
+      wait for CLK_period/4;
+		CLK <= '1';
+      wait for CLK_period/4;
+      CLK <= '0';
+		wait for CLK_period/4;
+		CLK <= '1';
+      wait for CLK_period/4;
+      CLK <= '0';
+      wait;
    end process;
- 
-
 
    stim_proc: process
    begin		
-      wait for 100 ns;	
-
-      wait for CLK_period*10;
-
-
       wait;
    end process;
 

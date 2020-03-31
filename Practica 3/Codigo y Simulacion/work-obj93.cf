@@ -1,4 +1,0 @@
-v 4
-file . "contBCD.vhd" "df78b20e7505c2aa347f82439bbd0ed4ebc278d6" "20200331012141.354":
-  entity contbcd at 1( 0) + 0 on 11;
-  architecture funcional of contbcd at 12( 239) + 0 on 12;
