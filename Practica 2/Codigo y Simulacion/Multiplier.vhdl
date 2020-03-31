@@ -5,7 +5,7 @@ entity multiplier is
   port(
     A : IN BIT_VECTOR(3 DOWNTO 0);
     B : IN BIT_VECTOR(3 DOWNTO 0); 
-    Z : OUT BIT_VECTOR(8 DOWNTO 0)); 
+    Z : OUT BIT_VECTOR(7 DOWNTO 0)); 
 end multiplier;
 
 architecture arch of multiplier is
