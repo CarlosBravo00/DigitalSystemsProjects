@@ -1,0 +1,10 @@
+v 4
+file . "ContadorAD.vhdl" "63ca155a396570b08f73e9e6c79632a7ce283592" "20200417004803.625":
+  entity contador at 1( 0) + 0 on 79;
+  architecture behavioral of contador at 11( 233) + 0 on 80;
+file . "testContadorAD.vhdl" "c3f337ecc9deccb2e11f97b52287374cd70b5abf" "20200417004813.373":
+  entity testcontadorad at 1( 0) + 0 on 81;
+  architecture behavior of testcontadorad at 7( 99) + 0 on 82;
+file . "FlipFlopJK.vhdl" "60c479b7d877771fee23a791919d8bff1984341f" "20200417004723.268":
+  entity flipflopjk at 1( 0) + 0 on 77;
+  architecture funcional of flipflopjk at 14( 243) + 0 on 78;
