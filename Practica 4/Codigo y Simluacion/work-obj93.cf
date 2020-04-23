@@ -1,7 +1,13 @@
 v 4
-file . "BCDto4Display.vhdl" "916096670846963ae772f2b6c57663584d381f29" "20200331172016.147":
-  entity bcdto4display at 1( 0) + 0 on 29;
-  architecture arch of bcdto4display at 14( 441) + 0 on 30;
+file . "DigitosA7seG.vhdl" "3f7fad8eab5d3c330c54118d780cf4d983c1e5fd" "20200423235107.810":
+  entity digitosa7seg at 1( 0) + 0 on 75;
+  architecture arch of digitosa7seg at 13( 390) + 0 on 76;
+file . "DigitosA7seg_tb.vhdl" "9af5f8d18a8375c292ec2c83c9f672e11975ab3c" "20200423235110.061":
+  entity digitos_test at 1( 0) + 0 on 77;
+  architecture behavior of digitos_test at 7( 95) + 0 on 78;
 file . "SRcomp2_tb.vhdl" "22a68d33270519697ad1c9bd26bf00498f347ed3" "20200331172018.826":
   entity test at 1( 0) + 0 on 31;
   architecture behavior of test at 7( 78) + 0 on 32;
+file . "BCDto4Display.vhdl" "9ef07c39f9444e24334443d055d058c0f3b16f94" "20200423231934.439":
+  entity bcdto4display at 1( 0) + 0 on 51;
+  architecture arch of bcdto4display at 9( 208) + 0 on 52;
