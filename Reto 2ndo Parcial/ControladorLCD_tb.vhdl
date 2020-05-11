@@ -73,13 +73,15 @@ stimulus : process
        read(current_read_line, current_read_field);
        
        if (current_read_field(1 to 3) = string'("NEW")) then 
-         if (SIGNAL_RS = '0') then
+       wait for 200 ns;
+
+         if (SIGNAL_RS = '0')  and (SIGNAL_EN = '1') then
            write(current_line, string'("instr("));
            write(current_line, to_integer(signed(DATA)));
            write(current_line, string'(");"));
            writeline(fout, current_line);
 
-         elsif (SIGNAL_RS = '1') then
+         elsif (SIGNAL_RS = '1') and (SIGNAL_EN = '1') then
             write(current_line, string'("data("));
             write(current_line, to_integer(signed(DATA)));
             write(current_line, string'(");"));  
@@ -87,7 +89,7 @@ stimulus : process
 
          end if;
 
-       wait for 400 ns;
+       wait for 200 ns;
 
        else 
        if (current_read_field(1 to 3) = string'("DAT")) then 
