@@ -7,7 +7,7 @@ entity ControladorLCD is
     RESET : in  STD_LOGIC;
     RS : in  STD_LOGIC;
     RWDATA : in  STD_LOGIC;
-    INSTRUCTIONS : in STD_LOGIC_VECTOR (7 downto 0);
+    DATA_INSTRUCTIONS : in STD_LOGIC_VECTOR (7 downto 0);
 
     SIGNAL_RS : OUT  STD_LOGIC;
     SIGNAL_RW : OUT STD_LOGIC;
@@ -18,26 +18,43 @@ end  ControladorLCD;
 
 architecture arch of ControladorLCD is
 
-TYPE STATE IS(IDLE, READY, SEND);
-SIGNAL  estado : STATE;
+TYPE STATE IS(IDLE, RUN);
+SIGNAL  present: STATE;
 
 begin
-    process(clk)
-    begin
-        if rising_edge(clk)
-        then
-            case estado is
-                when IDLE=>
-                  estado <=READY;
-                when READY=>
-                  estado <=SEND;
-                when SEND=>
-                  estado <=IDLE;
 
-                when others => null;
-                    end case;
-                else null;
+  process(CLK)
+  begin 
+
+  IF(RESET = '1') THEN
+    present <= IDLE;
+  END IF;
+
+  if rising_edge(clk) then
+   case present is
+       when IDLE=>
+          if (RWDATA = '1') then 
+            present <= RUN;
+              else
+            SIGNAL_RS <= '0';
+            SIGNAL_RW <= '0';
+            SIGNAL_EN <= '0'; 
+            DATA <= "00000000";
+           present <=IDLE;
+           end if; 
+                    
+       when RUN=>
+            if  (RWDATA = '1') then 
+            SIGNAL_RS <= RS;
+            SIGNAL_RW <= RWDATA;
+            SIGNAL_EN <= '1'; 
+            DATA <= DATA_INSTRUCTIONS;
+            else 
+            present <= IDLE;
             end if;
-    end process;
-
+            
+       when others => null; 
+            end case;
+            end if;
+    end process; 
 end arch;

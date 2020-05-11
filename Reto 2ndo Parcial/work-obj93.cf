@@ -1,7 +1,7 @@
 v 4
-file . "ControladorLCD.vhdl" "e9758ab6a55cd52f70b04136aa22f3c571165618" "20200511013704.622":
-  entity controladorlcd at 1( 0) + 0 on 15;
-  architecture arch of controladorlcd at 19( 423) + 0 on 16;
-file . "ControladorLCD_tb.vhdl" "06d216cad274d7156c1751a2724de61b6b6fa840" "20200511013945.008":
-  entity testcontroladorlcd at 1( 0) + 0 on 19;
-  architecture behavior of testcontroladorlcd at 7( 107) + 0 on 20;
+file . "ControladorLCD.vhdl" "4f47c9b69a9937e2b9293f480e98e0cd87ae66f3" "20200511050557.728":
+  entity controladorlcd at 1( 0) + 0 on 169;
+  architecture arch of controladorlcd at 19( 428) + 0 on 170;
+file . "ControladorLCD_tb.vhdl" "cf217faacf6176e96763f150e211d0af921f9404" "20200511065934.075":
+  entity testcontroladorlcd at 1( 0) + 0 on 239;
+  architecture behavior of testcontroladorlcd at 12( 203) + 0 on 240;
