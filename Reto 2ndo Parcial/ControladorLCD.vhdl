@@ -18,18 +18,8 @@ end  ControladorLCD;
 
 architecture arch of ControladorLCD is
 
---    component BCDto4Display is
---         Port ( BCD_in : in STD_LOGIC_VECTOR (3 downto 0);
---               LED_out : out STD_LOGIC_VECTOR (6 downto 0));
---        end  component;
-
 TYPE STATE IS(IDLE, READY, SEND);
 SIGNAL  estado : STATE;
-
---
---signal estado: std_logic_vector(3 downto 0):="0000";
---signal LED_out1,LED_out2,LED_out3,LED_out4 : STD_LOGIC_VECTOR (6 downto 0);
-
 
 begin
     process(clk)

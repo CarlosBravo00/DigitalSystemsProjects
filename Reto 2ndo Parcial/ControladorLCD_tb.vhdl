@@ -6,7 +6,7 @@ END testControladorLCD ;
  
 ARCHITECTURE behavior OF testControladorLCD  IS 
  
-    COMPONENT contador
+    COMPONENT ControladorLCD
     PORT(
        clk : in  STD_LOGIC;
        RESET : in  STD_LOGIC;
@@ -23,7 +23,7 @@ ARCHITECTURE behavior OF testControladorLCD  IS
    signal CLK : STD_LOGIC := '0';
    signal RESET: STD_LOGIC := '0';
    signal RS : STD_LOGIC := '0';
-   signal RWDATE : STD_LOGIC := '0';
+   signal RWDATA : STD_LOGIC := '0';
    signal INSTRUCTIONS: STD_LOGIC_VECTOR (7 downto 0) := "00000000";
 
    signal SIGNAL_RS : STD_LOGIC := '0';
@@ -34,12 +34,12 @@ ARCHITECTURE behavior OF testControladorLCD  IS
    constant CLK_period : time := 10 ns;
  
 BEGIN
-   uut: contador PORT MAP (
+   uut: ControladorLCD PORT MAP (
        CLK => CLK,
        RESET => RESET,
        RS => RS,
-       RWDATE => RWDATE,
-       INSTRUCTIONS => DATA/INSTRUCTIONS,
+       RWDATA => RWDATA,
+       INSTRUCTIONS => INSTRUCTIONS,
     
        SIGNAL_RS => SIGNAL_RS,
        SIGNAL_RW => SIGNAL_RW, 
