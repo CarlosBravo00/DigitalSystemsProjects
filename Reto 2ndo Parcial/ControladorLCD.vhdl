@@ -5,8 +5,8 @@ entity ControladorLCD is
     Port ( 
     clk : in  STD_LOGIC;
     RESET : in  STD_LOGIC;
-    RS : in  STD_LOGIC;  --LCD module Register Select Signal
-    RWDATA : in  STD_LOGIC;--LCD module Read/Write Select Signal
+    RS : in  STD_LOGIC;  --LCD module Register Select Signal     0= INSTRUCTIONS   1= DATA 
+    RWDATA : in  STD_LOGIC;--LCD module Read/Write Select Signal      1=READ   0=WRITE
     DATA_INSTRUCTIONS : in STD_LOGIC_VECTOR (7 downto 0);
 
     SIGNAL_RS : OUT  STD_LOGIC; --LCD module Register Select Signal
