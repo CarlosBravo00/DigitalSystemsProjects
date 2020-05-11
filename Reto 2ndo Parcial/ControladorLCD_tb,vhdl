@@ -1,0 +1,60 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+
+ENTITY testControladorLCD  IS
+END testControladorLCD ;
+ 
+ARCHITECTURE behavior OF testControladorLCD  IS 
+ 
+    COMPONENT contador
+    PORT(
+       clk : in  STD_LOGIC;
+       RESET : in  STD_LOGIC;
+       RS : in  STD_LOGIC;
+       RWDATA : in  STD_LOGIC;
+       INSTRUCTIONS : in STD_LOGIC_VECTOR (7 downto 0);
+   
+       SIGNAL_RS : OUT  STD_LOGIC;
+       SIGNAL_RW : OUT STD_LOGIC;
+       SIGNAL_EN : OUT  STD_LOGIC;
+       DATA  : out STD_LOGIC_VECTOR (7 downto 0));
+    END COMPONENT;
+
+   signal CLK : STD_LOGIC := '0';
+   signal RESET: STD_LOGIC := '0';
+   signal RS : STD_LOGIC := '0';
+   signal RWDATE : STD_LOGIC := '0';
+   signal INSTRUCTIONS: STD_LOGIC_VECTOR (7 downto 0) := "00000000";
+
+   signal SIGNAL_RS : STD_LOGIC := '0';
+   signal SIGNAL_RW : STD_LOGIC := '0';
+   signal SIGNAL_EN : STD_LOGIC := '0';
+   signal DATA : STD_LOGIC_VECTOR (7 downto 0) := "00000000";
+
+   constant CLK_period : time := 10 ns;
+ 
+BEGIN
+   uut: contador PORT MAP (
+       CLK => CLK,
+       RESET => RESET,
+       RS => RS,
+       RWDATE => RWDATE,
+       INSTRUCTIONS => DATA/INSTRUCTIONS,
+    
+       SIGNAL_RS => SIGNAL_RS,
+       SIGNAL_RW => SIGNAL_RW, 
+       SIGNAL_EN => SIGNAL_EN,
+       DATA => DATA
+
+        );
+
+ CLK_process :process
+        begin
+             CLK <= '0';
+             wait for CLK_period/2;
+             CLK <= '1';
+             wait for CLK_period/2;
+        end process;
+
+
+END;

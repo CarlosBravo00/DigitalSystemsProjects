@@ -1,0 +1,4 @@
+v 4
+file . "ControladorLCD.vhdl" "e9758ab6a55cd52f70b04136aa22f3c571165618" "20200511013239.546":
+  entity controladorlcd at 1( 0) + 0 on 13;
+  architecture arch of controladorlcd at 19( 423) + 0 on 14;
