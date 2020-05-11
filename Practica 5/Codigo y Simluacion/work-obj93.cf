@@ -1,0 +1,10 @@
+v 4
+file . "FlipFlopJK.vhdl" "60c479b7d877771fee23a791919d8bff1984341f" "20200511001120.054":
+  entity flipflopjk at 1( 0) + 0 on 25;
+  architecture funcional of flipflopjk at 14( 243) + 0 on 26;
+file . "RelojDigital.vhdl" "51d66d9759480f3b1f7bada435af24ddf16917d6" "20200511002315.980":
+  entity contador at 1( 0) + 0 on 29;
+  architecture behavioral of contador at 12( 303) + 0 on 30;
+file . "RelojDigital_tb.vhdl" "537532fdf2c6648bee86f1d333e6eadfcb22ea5a" "20200511002326.586":
+  entity testrelojdigital at 1( 0) + 0 on 33;
+  architecture behavior of testrelojdigital at 7( 103) + 0 on 34;
