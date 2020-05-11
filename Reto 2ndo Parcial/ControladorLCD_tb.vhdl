@@ -36,7 +36,7 @@ ARCHITECTURE behavior OF testControladorLCD  IS
    signal SIGNAL_EN : STD_LOGIC := '0';
    signal DATA : STD_LOGIC_VECTOR (7 downto 0) := "00000000";
 
-   constant CLK_period : time := 10 ns;
+   constant CLK_period : time := 50 ns;
    
 
  
@@ -73,13 +73,13 @@ stimulus : process
        read(current_read_line, current_read_field);
        
        if (current_read_field(1 to 3) = string'("NEW")) then 
-         if (SIGNAL_RS = '0' and SIGNAL_EN ='1') then
+         if (SIGNAL_RS = '0') then
            write(current_line, string'("instr("));
            write(current_line, to_integer(signed(DATA)));
            write(current_line, string'(");"));
            writeline(fout, current_line);
 
-         elsif (SIGNAL_RS = '1' and SIGNAL_EN ='1') then
+         elsif (SIGNAL_RS = '1') then
             write(current_line, string'("data("));
             write(current_line, to_integer(signed(DATA)));
             write(current_line, string'(");"));  
@@ -87,7 +87,7 @@ stimulus : process
 
          end if;
 
-       wait for 150 ns;
+       wait for 400 ns;
 
        else 
        if (current_read_field(1 to 3) = string'("DAT")) then 

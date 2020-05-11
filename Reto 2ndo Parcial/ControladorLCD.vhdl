@@ -4,7 +4,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity ControladorLCD is
     Port ( 
     clk : in  STD_LOGIC;
-    RESET : in  STD_LOGIC;- 
+    RESET : in  STD_LOGIC;
     RS : in  STD_LOGIC;  --LCD module Register Select Signal
     RWDATA : in  STD_LOGIC;--LCD module Read/Write Select Signal
     DATA_INSTRUCTIONS : in STD_LOGIC_VECTOR (7 downto 0);
@@ -24,6 +24,7 @@ SIGNAL  present: STATE;
 begin
 
   process(CLK)
+  VARIABLE clk_count : INTEGER := 0; 
   begin 
 
   if rising_edge(clk)  then
@@ -38,6 +39,9 @@ begin
    case present is
        when IDLE=>
           if (RWDATA = '1') then 
+            SIGNAL_RS <= RS;
+            SIGNAL_RW <= RWDATA;
+            DATA <= DATA_INSTRUCTIONS;
             present <= RUN;
               else
             SIGNAL_RS <= '0';
@@ -48,15 +52,16 @@ begin
            end if; 
                     
        when RUN=>
-            if  (RWDATA = '1') then 
-            SIGNAL_RS <= RS;
-            SIGNAL_RW <= RWDATA;
-            SIGNAL_EN <= '1'; 
-            DATA <= DATA_INSTRUCTIONS;
+            if(clk_count <= 5) then
+              clk_count := clk_count + 1;
+              SIGNAL_EN <= '1';
+              present <= RUN;
             else 
-            present <= IDLE;
-            end if;
-            
+              SIGNAL_EN <= '0';
+              clk_count := 0;
+              present <= IDLE;   
+           end if;
+                      
        when others => null; 
             end case;
             end if;
