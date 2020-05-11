@@ -29,16 +29,9 @@ begin
 
   if rising_edge(clk)  then
 
-  IF(RESET = '1') THEN
-  SIGNAL_RS <= '0';
-  SIGNAL_RW <= '0';
-  SIGNAL_EN <= '0'; 
-  DATA <= "00000000";
-  present <= IDLE;
-  else  
    case present is
        when IDLE=>
-          if (RWDATA = '1') then 
+          if (RWDATA = '1') AND (RESET = '0') then 
             SIGNAL_RS <= RS;
             SIGNAL_RW <= RWDATA;
             DATA <= DATA_INSTRUCTIONS;
@@ -65,7 +58,7 @@ begin
        when others => null; 
             end case;
             end if;
-        end if;
+
     end process; 
 
 end arch;
