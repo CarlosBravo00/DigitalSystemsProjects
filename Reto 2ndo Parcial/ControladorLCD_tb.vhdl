@@ -87,7 +87,7 @@ stimulus : process
 
          end if;
 
-       wait for 100 ns;
+       wait for 150 ns;
 
        else 
        if (current_read_field(1 to 3) = string'("DAT")) then 

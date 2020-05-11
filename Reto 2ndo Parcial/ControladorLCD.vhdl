@@ -4,14 +4,14 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity ControladorLCD is
     Port ( 
     clk : in  STD_LOGIC;
-    RESET : in  STD_LOGIC;
-    RS : in  STD_LOGIC;
-    RWDATA : in  STD_LOGIC;
+    RESET : in  STD_LOGIC;- 
+    RS : in  STD_LOGIC;  --LCD module Register Select Signal
+    RWDATA : in  STD_LOGIC;--LCD module Read/Write Select Signal
     DATA_INSTRUCTIONS : in STD_LOGIC_VECTOR (7 downto 0);
 
-    SIGNAL_RS : OUT  STD_LOGIC;
-    SIGNAL_RW : OUT STD_LOGIC;
-    SIGNAL_EN : OUT  STD_LOGIC;
+    SIGNAL_RS : OUT  STD_LOGIC; --LCD module Register Select Signal
+    SIGNAL_RW : OUT STD_LOGIC;--LCD module Read/Write Select Signal
+    SIGNAL_EN : OUT  STD_LOGIC;--Enable 
     DATA  : out STD_LOGIC_VECTOR (7 downto 0));
 
 end  ControladorLCD;
@@ -26,11 +26,15 @@ begin
   process(CLK)
   begin 
 
-  IF(RESET = '1') THEN
-    present <= IDLE;
-  END IF;
+  if rising_edge(clk)  then
 
-  if rising_edge(clk) then
+  IF(RESET = '1') THEN
+  SIGNAL_RS <= '0';
+  SIGNAL_RW <= '0';
+  SIGNAL_EN <= '0'; 
+  DATA <= "00000000";
+  present <= IDLE;
+  else  
    case present is
        when IDLE=>
           if (RWDATA = '1') then 
@@ -56,5 +60,7 @@ begin
        when others => null; 
             end case;
             end if;
+        end if;
     end process; 
+
 end arch;
