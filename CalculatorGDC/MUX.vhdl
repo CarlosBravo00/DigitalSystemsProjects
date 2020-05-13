@@ -13,6 +13,5 @@ architecture arch of mux is
 begin
 -- USING WHEN
    res <=  x when (sel = '0') else
-           y when (sel = '1') else
-           null when OTHERS;
+           y when (sel = '1'); 
 end arch ;
