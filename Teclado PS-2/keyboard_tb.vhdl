@@ -31,13 +31,13 @@ architecture arch of keyboard_tb is
     signal scan_code : std_logic_vector(7 downto 0);
 
     type code_type is array (natural range <>) of std_logic_vector(7 downto 0);
-    type T_Code is record
+    type record_input is record
         codes : std_logic_vector(7 downto 0);
         parity : std_logic;
-    end record T_Code;
-    type Ar_code is array(natural range <>) of T_code;
+    end record record_input;
+    type Ar_code is array(natural range <>) of record_input;
 
-    constant c_codes : Ar_code := ((x"15",'1'), (x"1D",'0'));
+    constant c_codes : Ar_code := ((x"15",'0'), (x"1D",'0'));
 
 begin
 
@@ -82,12 +82,13 @@ begin
             wait for (bit_period / 2);
             kbd_clk <= '1';
             kbd_data <= 'H';
-            wait for bit_period * 3;
+            wait for bit_period * 7;
         end procedure send_code;
 
     begin
         wait for bit_period;
-        for i in c_codes'range loop
+        --for i in c_codes'range loop
+        for i in 0 to 1 loop
             send_code(c_codes(i).codes,c_codes(i).parity);
         end loop;
     end process;
