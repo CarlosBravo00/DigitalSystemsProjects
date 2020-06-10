@@ -37,8 +37,8 @@ architecture arch of keyboard_tb is
     end record record_input;
     type Ar_code is array(natural range <>) of record_input;
 
-    constant c_codes : Ar_code := ((x"15",'0'), (x"1D",'0'));
-
+   -- constant c_codes : Ar_code := ((x"15",'0'), (x"1D",'0'));
+   constant c_codes : Ar_code := (("00010101",'0'), ("00011101",'0'));
 begin
 
     UUT : keyboard port map (kbd_clk, kbd_data, clk, reset, enable, scan_code, parity_error, scan_ready);
@@ -82,13 +82,12 @@ begin
             wait for (bit_period / 2);
             kbd_clk <= '1';
             kbd_data <= 'H';
-            wait for bit_period * 7;
+            wait for bit_period;
         end procedure send_code;
 
     begin
         wait for bit_period;
-        --for i in c_codes'range loop
-        for i in 0 to 1 loop
+        for i in c_codes'range loop
             send_code(c_codes(i).codes,c_codes(i).parity);
         end loop;
     end process;
@@ -99,6 +98,9 @@ begin
         wait until scan_ready = '1';
         write (l, string'("Scan code: "));
         write (l, scan_code);
+        if (parity_error = '1') then
+        write (l, string'(" Parity error"));
+        end if;
         writeline(output, l);
         wait for 300* period;
     end process;

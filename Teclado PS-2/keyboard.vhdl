@@ -10,7 +10,6 @@ entity keyboard is
     );
 end entity;
 
-
 architecture arch of keyboard is
     Type State is(IDLE,RUN);
     signal incount : unsigned(3 downto 0) := "0000";
@@ -19,13 +18,12 @@ architecture arch of keyboard is
     signal ready_set : std_logic := '0';
     signal shift_in : std_logic_vector(8 downto 0) :="000000000";
     signal filter : std_logic_vector(7 downto 0);
-    signal ver_parity : std_logic := '1';
+    signal ver_parity : std_logic := '0';
     SIGNAL present:state := IDLE;
 
 begin
-
+     -- Filtrar señal de reloj
     clock_filter : process
-    -- Filtrar señal de reloj
     begin
         wait until clk_25Mhz'event and clk_25Mhz = '1'; -- rising_edge(clk)
         filter(6 downto 0) <= filter(7 downto 1);
@@ -40,15 +38,16 @@ begin
     process (keyboard_clk_filtered)
     begin
     if reset = '1' then
-            incount <= x"0";
-            read_char <= '0';
+        incount <= x"0";
+        read_char <= '0';
      else 
     if (keyboard_clk_filtered'event and keyboard_clk_filtered = '0') then --rising_edge(filtered)
     case present is 
 
        when IDLE =>
        if keyboard_data = '0' and read_char = '0' then -- Primer bit inicio 
-                shift_in <= "000000000";         
+                shift_in <= "000000000"; 
+                ver_parity <= '0';        
                 read_char <= '1';
                 ready_set <= '0';
                 present <= RUN;
@@ -61,9 +60,8 @@ begin
               ready_set <= '0';
               ver_parity <= ver_parity xor keyboard_data;
               incount <= incount + 1;
-              
         else 
-            parity_error <= ver_parity xnor keyboard_data;
+            parity_error <= ver_parity xor keyboard_data;
             scan_code <= shift_in(7 downto 0);
             read_char <= '0';
             ready_set <= '1';
