@@ -19,11 +19,11 @@ begin
     process (clk)
     begin 
         if clk'event and clk = '1' then 
-            if column > 100 AND column < 200 AND row > 1 AND row < 5 then 
+            if column > 220 AND column < 420 AND row > 0 AND row < 5 then --cubo blanco en Medio 
             red <= "111";
             green <= "111";
             blue <= "111";
-            else 
+            else -- Resto pantalla 
             red <= "000";
             green <= "000";
             blue <= "111";
