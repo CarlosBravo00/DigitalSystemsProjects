@@ -33,27 +33,22 @@ architecture arch of vga_controller_tb is
         );
         port (
             clk : in std_logic;
-            enable : out std_logic;
-            column : out integer;
-            row : out integer;
             clk_out : out std_logic;
-            h_sync, v_sync : out std_logic
-            
+            h_sync, v_sync : out std_logic;
+            rgb : out std_logic_vector(8 downto 0)
         );
     end component;
     
     signal clk : std_logic := '0';
-    signal enable : std_logic;
-    signal column : integer;
-    signal row : integer;
     signal clk_out : std_logic;
     signal h_sync, v_sync : std_logic;
+    signal rgb : std_logic_vector(8 downto 0);
 
 begin
 
     UUT : vga_controller 
         generic map (h_pulse,h_bp, h_display, h_fp,h_pol,v_pulse,v_bp,v_display,v_fp,v_pol)
-        port map (clk, enable, column, row, clk_out, h_sync, v_sync);
+        port map (clk, clk_out, h_sync, v_sync,rgb);
 
     process 
     begin
